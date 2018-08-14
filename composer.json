@@ -1,0 +1,19 @@
+{
+  "name": "dpauli/graphql-request-builder",
+  "description": "Request Builder for GraphQL payload",
+  "type": "library",
+  "homepage": "https://github.com/dpauli/php-graphql-request-builder",
+  "readme": "README.md",
+  "require": {
+    "php": ">=7.1.0",
+    "blackbonjour/stdlib": "1.0.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "7.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "GraphQL\\RequestBuilder\\": "src/"
+    }
+  }
+}
