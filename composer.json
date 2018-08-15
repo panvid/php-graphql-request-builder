@@ -4,6 +4,7 @@
   "type": "library",
   "homepage": "https://github.com/dpauli/php-graphql-request-builder",
   "readme": "README.md",
+  "license": "MIT",
   "require": {
     "php": ">=7.1.0",
     "blackbonjour/stdlib": "1.0.*"
