@@ -18,7 +18,7 @@ class Argument implements ArgumentInterface
     /** @var string Name of the argument. */
     private $name;
 
-    /** @var int|float|string|bool|ArgumentInterface[]|ArgumentInterface The value of the argument. */
+    /** @var int|float|string|bool|Argument[]|Argument The value of the argument. */
     private $value;
 
     /**
@@ -60,7 +60,9 @@ class Argument implements ArgumentInterface
                     : json_encode($this->value);
                 break;
             case 'object':
-                $value = $this->buildStringFromArray([$this->value]);
+                $value = Assert::validate(self::class, $this->value)
+                    ? $this->buildStringFromArgument($this->value)
+                    : null;
                 break;
             default:
                 $value =  null;
@@ -69,19 +71,24 @@ class Argument implements ArgumentInterface
     }
 
     /**
-     * @param  self[] $values
+     * @param  Argument[] $values
      * @return string|null
      */
     private function buildStringFromArray(array $values): ?string
     {
-        if (Assert::validate(self::class, ...$values) === false) {
-            return null;
-        }
-
         $returnArray = [];
         foreach ($values as $value) {
-            $returnArray[] = (string) $value;
+            $returnArray[] = $this->buildStringFromArgument($value);
         }
-        return '{' . implode(',', $returnArray) . '}';
+        return '[' . implode(',', $returnArray) . ']';
+    }
+
+    /**
+     * @param  Argument $argument
+     * @return string|null
+     */
+    private function buildStringFromArgument(Argument $argument): ?string
+    {
+        return '{' . $argument . '}';
     }
 }

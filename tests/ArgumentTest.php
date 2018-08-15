@@ -56,8 +56,8 @@ class ArgumentTest extends TestCase
         $argument = new Argument(self::ARGUMENT_NAME, [$innerArgument, $innerArgument2]);
 
         static::assertEquals(
-            self::ARGUMENT_NAME . ':{' . self::ARGUMENT_NAME_INNER . ':"' . self::ARGUMENT_VALUE_STRING . '",'
-                . self::ARGUMENT_NAME_INNER_2 . ':' . self::ARGUMENT_VALUE_INT_POSITIVE . '}',
+            self::ARGUMENT_NAME . ':[{' . self::ARGUMENT_NAME_INNER . ':"' . self::ARGUMENT_VALUE_STRING . '"},{'
+                . self::ARGUMENT_NAME_INNER_2 . ':' . self::ARGUMENT_VALUE_INT_POSITIVE . '}]',
             (string) $argument,
             'Setting array of Arguments should return correct string.'
         );
