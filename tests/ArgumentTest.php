@@ -48,7 +48,7 @@ class ArgumentTest extends TestCase
         static::assertEquals($expectedString, (string) $argument, $message);
     }
 
-    public function testToStringArray(): void
+    public function testToStringArgumentArray(): void
     {
         $innerArgument = new Argument(self::ARGUMENT_NAME_INNER, self::ARGUMENT_VALUE_STRING);
         $innerArgument2 = new Argument(self::ARGUMENT_NAME_INNER_2, self::ARGUMENT_VALUE_INT_POSITIVE);
@@ -136,6 +136,12 @@ class ArgumentTest extends TestCase
                 self::ARGUMENT_VALUE_FLOAT_ZERO,
                 self::ARGUMENT_NAME . ':0',
                 'Setting zero float should generate correct string.'
+            ],
+            [
+                [self::ARGUMENT_VALUE_STRING, self::ARGUMENT_VALUE_INT_POSITIVE],
+                self::ARGUMENT_NAME . ':["' . self::ARGUMENT_VALUE_STRING . '",' . self::ARGUMENT_VALUE_INT_POSITIVE
+                    . ']',
+                'Setting array with scalar should generate correct string.'
             ]
         ];
     }

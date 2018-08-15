@@ -55,7 +55,9 @@ class Argument implements ArgumentInterface
                 $value = $this->value ? 'true' : 'false';
                 break;
             case 'array':
-                $value = $this->buildStringFromArray($this->value);
+                $value = Assert::validate(self::class, ...$this->value)
+                    ? $this->buildStringFromArray($this->value)
+                    : json_encode($this->value);
                 break;
             case 'object':
                 $value = $this->buildStringFromArray([$this->value]);
