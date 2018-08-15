@@ -38,15 +38,15 @@ interface TypeInterface
     /**
      * Adds a specific subtype to the type.
      *
-     * @param  TypeInterface $type
+     * @param  TypeInterface|string $type
      * @return self
      */
-    public function addSubType(TypeInterface $type): TypeInterface;
+    public function addSubType($type): TypeInterface;
 
     /**
      * Adds a couple of specific subtypes to the type.
      *
-     * @param  TypeInterface[] $types
+     * @param  TypeInterface[]|string[] $types
      * @return self
      */
     public function addSubTypes(array $types): TypeInterface;

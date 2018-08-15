@@ -29,9 +29,8 @@ use GraphQL\RequestBuilder\Type;
 $searchType = new Type('search');
 $searchType->addArgument(new Argument('criteria', new Argument('start', '2019-08-23')));
 $searchType->addSubTypes([
-    (new Type('errors'))
-        ->addSubTypes([new Type('code'), new Type('type'), new Type('description')]),
-    new Type('id')
+    (new Type('errors'))->addSubTypes(['code', 'type', 'description']),
+    'id'
 ]);
 
 $field = (new Type('field'))->addSubType($searchType);

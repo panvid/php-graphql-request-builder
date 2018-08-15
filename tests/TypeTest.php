@@ -84,6 +84,26 @@ class TypeTest extends TestCase
         );
     }
 
+    public function testAddSubTypeString(): void
+    {
+        $type = new Type(self::TYPE_NAME);
+        $typeTwice = new Type(self::TYPE_NAME);
+
+        $type->addSubType(self::ARGUMENT_NAME);
+        $typeTwice->addSubType(self::ARGUMENT_NAME)->addSubType(self::ARGUMENT_NAME);
+
+        static::assertEquals(
+            self::TYPE_NAME . '{' . self::ARGUMENT_NAME . '}',
+            (string) $type,
+            'Setting a subtype as string should create correct string.'
+        );
+        static::assertEquals(
+            (string) $type,
+            (string) $typeTwice,
+            'Add item with subtype as string twice will create same string.'
+        );
+    }
+
     public function testAddSubTypes(): void
     {
         $type = new Type(self::TYPE_NAME);
@@ -103,6 +123,47 @@ class TypeTest extends TestCase
             (string) $type,
             (string) $typeTwice,
             'Add sub types in single steps will create same string.'
+        );
+    }
+
+    public function testAddSubTypesAsString(): void
+    {
+        $type = new Type(self::TYPE_NAME);
+        $typeTwice = new Type(self::TYPE_NAME);
+
+        $type->addSubTypes([self::ARGUMENT_NAME, self::ARGUMENT_NAME_2]);
+        $typeTwice->addSubType(self::ARGUMENT_NAME)->addSubType(self::ARGUMENT_NAME_2);
+
+        static::assertEquals(
+            self::TYPE_NAME . '{' . self::ARGUMENT_NAME . ',' . self::ARGUMENT_NAME_2 . '}',
+            (string) $type,
+            'Setting array with multiple sub types as string should return correct string.'
+        );
+        static::assertEquals(
+            (string) $type,
+            (string) $typeTwice,
+            'Add sub types in single steps as string will create same string.'
+        );
+    }
+
+    public function testAddSubTypesAsStringAndType(): void
+    {
+        $type = new Type(self::TYPE_NAME);
+        $typeTwice = new Type(self::TYPE_NAME);
+        $addType = new Type(self::ARGUMENT_NAME);
+
+        $type->addSubTypes([$addType, self::ARGUMENT_NAME_2]);
+        $typeTwice->addSubType($addType)->addSubType(self::ARGUMENT_NAME_2);
+
+        static::assertEquals(
+            self::TYPE_NAME . '{' . self::ARGUMENT_NAME . ',' . self::ARGUMENT_NAME_2 . '}',
+            (string) $type,
+            'Setting array with multiple sub types as string should return correct string.'
+        );
+        static::assertEquals(
+            (string) $type,
+            (string) $typeTwice,
+            'Add sub types in single steps as string will create same string.'
         );
     }
 

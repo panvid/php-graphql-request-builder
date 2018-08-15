@@ -56,9 +56,13 @@ class Type implements TypeInterface
     /**
      * @inheritdoc
      */
-    public function addSubType(TypeInterface $type): TypeInterface
+    public function addSubType($type): TypeInterface
     {
-        $this->types[$type->getName()] = $type;
+        if (\is_string($type)) {
+            $this->types[$type] = new Type($type);
+        } else {
+            $this->types[$type->getName()] = $type;
+        }
         return $this;
     }
 
