@@ -3,10 +3,8 @@ declare(strict_types=1);
 
 namespace GraphQL\RequestBuilder;
 
-use BlackBonjour\Stdlib\Exception\InvalidArgumentException;
 use BlackBonjour\Stdlib\Util\Assert;
 use GraphQL\RequestBuilder\Interfaces\ArgumentInterface;
-use TypeError;
 
 /**
  * Implementation of a GraphQL argument.
@@ -63,25 +61,19 @@ class Argument implements ArgumentInterface
                 $value = $this->buildStringFromArray([$this->value]);
                 break;
             default:
-                $value =  '';
+                $value =  null;
         }
-        return empty($value) ? '' : $this->name . ':' . $value;
+        return $value === null ? '' : $this->name . ':' . $value;
     }
 
     /**
      * @param  self[] $values
-     * @return string
+     * @return string|null
      */
-    private function buildStringFromArray(array $values): string
+    private function buildStringFromArray(array $values): ?string
     {
-        try {
-            $correctType = Assert::typeOf(self::class, ...$values);
-        } catch (TypeError|InvalidArgumentException $exception) {
-            return '';
-        }
-
-        if ($correctType === false) {
-            return '';
+        if (Assert::validate(self::class, ...$values) === false) {
+            return null;
         }
 
         $returnArray = [];

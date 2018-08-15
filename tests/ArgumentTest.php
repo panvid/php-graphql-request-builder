@@ -18,9 +18,11 @@ class ArgumentTest extends TestCase
     private const ARGUMENT_NAME_INNER = 'argumentNameInner';
     private const ARGUMENT_NAME_INNER_2 = 'argumentNameInner2';
     private const ARGUMENT_VALUE_INT_POSITIVE = 2;
-    private const ARGUMENT_VALUE_INT_NEGATIVE = 2;
+    private const ARGUMENT_VALUE_INT_ZERO = 0;
+    private const ARGUMENT_VALUE_INT_NEGATIVE = -2;
     private const ARGUMENT_VALUE_FLOAT_POSITIVE = 1.23;
-    private const ARGUMENT_VALUE_FLOAT_NEGATIVE = 1.23;
+    private const ARGUMENT_VALUE_FLOAT_ZERO = 0.0;
+    private const ARGUMENT_VALUE_FLOAT_NEGATIVE = -1.23;
     private const ARGUMENT_VALUE_STRING = 'argumentValueString';
     private const ARGUMENT_VALUE_STRING_EMPTY = '';
     private const ARGUMENT_VALUE_BOOL_TRUE = true;
@@ -124,6 +126,16 @@ class ArgumentTest extends TestCase
                 new Exception(),
                 '',
                 'Setting wrong type should generate empty string.'
+            ],
+            [
+                self::ARGUMENT_VALUE_INT_ZERO,
+                self::ARGUMENT_NAME . ':0',
+                'Setting zero int should generate correct string.'
+            ],
+            [
+                self::ARGUMENT_VALUE_FLOAT_ZERO,
+                self::ARGUMENT_NAME . ':0',
+                'Setting zero float should generate correct string.'
             ]
         ];
     }
