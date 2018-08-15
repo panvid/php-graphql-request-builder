@@ -61,7 +61,7 @@ class Argument implements ArgumentInterface
                 break;
             case 'object':
                 $value = Assert::validate(self::class, $this->value)
-                    ? $this->buildStringFromArgument($this->value)
+                    ? $this->buildStringFromArray([$this->value])
                     : null;
                 break;
             default:
@@ -74,21 +74,12 @@ class Argument implements ArgumentInterface
      * @param  Argument[] $values
      * @return string|null
      */
-    private function buildStringFromArray(array $values): ?string
+    protected function buildStringFromArray(array $values): ?string
     {
         $returnArray = [];
         foreach ($values as $value) {
-            $returnArray[] = $this->buildStringFromArgument($value);
+            $returnArray[] = (string) $value;
         }
-        return '[' . implode(',', $returnArray) . ']';
-    }
-
-    /**
-     * @param  Argument $argument
-     * @return string|null
-     */
-    private function buildStringFromArgument(Argument $argument): ?string
-    {
-        return '{' . $argument . '}';
+        return '{' . implode(',', $returnArray) . '}';
     }
 }
