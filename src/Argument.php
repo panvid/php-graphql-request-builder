@@ -16,7 +16,7 @@ use GraphQL\RequestBuilder\Interfaces\ArgumentInterface;
 class Argument implements ArgumentInterface
 {
     /** @var string Name of the argument. */
-    private $name;
+    protected $name;
 
     /** @var int|float|string|bool|Argument[]|Argument The value of the argument. */
     private $value;
@@ -67,7 +67,16 @@ class Argument implements ArgumentInterface
             default:
                 $value =  null;
         }
-        return $value === null ? '' : $this->name . ':' . $value;
+
+        if ($value === null) {
+            return '';
+        }
+
+        if ($this->name === '') {
+            return trim($value, '{}');
+        }
+
+        return $this->name . ':' . $value;
     }
 
     /**

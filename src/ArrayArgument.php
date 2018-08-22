@@ -18,8 +18,8 @@ class ArrayArgument extends Argument
     {
         $returnArray = [];
         foreach ($values as $value) {
-            $returnArray[] = '{' . (string) $value . '}';
+            $returnArray[] = $this->name === '' ? (string) $value : '{' . $value . '}';
         }
-        return '[' . implode(',', $returnArray) . ']';
+        return $this->name === '' ? implode(',', $returnArray) : '[' . implode(',', $returnArray) . ']';
     }
 }
