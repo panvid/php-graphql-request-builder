@@ -5,7 +5,7 @@ namespace GraphQL\RequestBuilder;
 
 /**
  * @author  david.pauli
- * @package GraphQLTest\RequestBuilder
+ * @package GraphQL\RequestBuilder
  * @since   15.08.2018
  */
 class ArrayArgument extends Argument

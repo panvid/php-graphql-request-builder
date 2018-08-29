@@ -172,3 +172,15 @@ $person2 = new ArrayArgument('', [new Argument('name', 'Max'), new Argument('age
 
 $persons = new ArrayArgument('persons', [$person1, $person2]);
 ```
+
+### Enum arguments
+To create enum arguments it should look like this:
+
+```php
+<?php
+declare(strict_types=1);
+
+use GraphQL\RequestBuilder\EnumArgument;
+
+$person1 = new EnumArgument('EnumAttribute', 'EnumValue');
+```

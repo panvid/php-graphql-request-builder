@@ -19,7 +19,7 @@ class Argument implements ArgumentInterface
     protected $name;
 
     /** @var int|float|string|bool|Argument[]|Argument The value of the argument. */
-    private $value;
+    protected $value;
 
     /**
      * @inheritdoc
