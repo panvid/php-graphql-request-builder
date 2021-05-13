@@ -8,17 +8,20 @@ on:
       - master
 jobs:
   build:
-    name: Build
+    name: Build with ${{ matrix.php-versions }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-versions: ["7.4", "8.0"]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     - uses: "shivammathur/setup-php@v2"
       with:
-        php-version: "7.3"
+        php-version: ${{ matrix.php-versions }}
     - uses: "ramsey/composer-install@v1"
     - name: PHPUnit tests
       uses: php-actions/phpunit@v2
       with:
-        php_version: "7.3"
+        php_version: ${{ matrix.php-versions }}
         configuration: phpunit.xml
