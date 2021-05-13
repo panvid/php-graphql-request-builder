@@ -1,0 +1,18 @@
+name: PHPUnit
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - uses: "ramsey/composer-install@v1"
+    - name: PHPUnit tests
+      uses: php-actions/phpunit@v2
