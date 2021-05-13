@@ -1,4 +1,6 @@
 # GraphQL Request Builder
+![UnitTests](https://github.com/dpauli/php-graphql-request-builder/actions/workflows/phpunit.yml/badge.svg)
+
 This library builds a request for sending to a GraphQL server.
 
 ## What is GraphQL?
