@@ -1,5 +1,5 @@
 .idea
-composer.phar
 vendor
 composer.lock
 .phpunit.result.cache
+.php-cs-fixer.cache

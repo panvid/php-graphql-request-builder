@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace GraphQL\RequestBuilder\Interfaces;
@@ -6,9 +7,8 @@ namespace GraphQL\RequestBuilder\Interfaces;
 /**
  * This are the types, represents the requested parameters in GraphQL.
  *
- * @author  David Pauli
- * @package GraphQL\RequestBuilder
- * @since   14.08.2018
+ * @author David Pauli
+ * @since  14.08.2018
  */
 interface TypeInterface
 {
