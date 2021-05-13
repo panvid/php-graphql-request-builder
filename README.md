@@ -161,7 +161,6 @@ The example above works if you have an `array` with only one `Argument`: every *
 ```
 
 Your *PHP* code should look like this:
-
 ```php
 <?php
 declare(strict_types=1);
