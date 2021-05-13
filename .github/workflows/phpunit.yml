@@ -7,7 +7,7 @@ on:
     branches:
       - master
 jobs:
-  build:
+  run:
     name: Build with ${{ matrix.php-versions }}
     runs-on: ubuntu-latest
     strategy:
