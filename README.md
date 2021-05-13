@@ -1,4 +1,7 @@
 # GraphQL Request Builder
+[![Latest Stable Version](https://poser.pugx.org/dpauli/graphql-request-builder/v)](//packagist.org/packages/dpauli/graphql-request-builder)
+[![Total Downloads](https://poser.pugx.org/dpauli/graphql-request-builder/downloads)](//packagist.org/packages/dpauli/graphql-request-builder)
+[![License](https://poser.pugx.org/dpauli/graphql-request-builder/license)](//packagist.org/packages/dpauli/graphql-request-builder)
 ![UnitTests](https://github.com/dpauli/php-graphql-request-builder/actions/workflows/phpunit.yml/badge.svg)
 
 This library builds a request for sending to a GraphQL server.
